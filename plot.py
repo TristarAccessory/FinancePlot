@@ -74,4 +74,32 @@ plt.legend(title='', fontsize=10)
 plt.grid(axis='y', linestyle='--', alpha=0.5)
 
 plt.tight_layout()
+
+# Save the plot to a file
+plt.savefig('output/quarterly_income_expense.png', dpi=300)
 plt.show()
+plt.close()
+
+# Plotting by month instead of by quarter
+plt.figure(figsize=(12, 6))
+
+# Compute positions for each bar group
+months = np.arange(len(income_expense_df['Month']))
+
+# Plot income and expense bars side by side
+plt.bar(months - bar_width / 2, income_expense_df['Income'], width=bar_width, color=colors['Income'], label='收入', alpha=0.8)
+plt.bar(months + bar_width / 2, income_expense_df['Expense'], width=bar_width, color=colors['Expense'], label='支出', alpha=0.8)
+
+# Add labels, title, and style adjustments
+plt.title('公司每月收支狀況', fontsize=18, fontweight='bold', ha='center')
+plt.xlabel('月份', fontsize=12)
+plt.ylabel('金額', fontsize=12)
+plt.xticks(months, income_expense_df['Month'], rotation=45, fontsize=10)
+plt.legend(title='', fontsize=10)
+plt.grid(axis='y', linestyle='--', alpha=0.5)
+
+plt.tight_layout()
+# Save the plot to a file
+plt.savefig('output/monthly_income_expense.png', dpi=300)
+plt.show()
+plt.close()
